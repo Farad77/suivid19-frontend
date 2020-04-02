@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Admin } from '../../_models/Admin';
+import { Relative } from '../../_models/Relative';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -7,26 +7,26 @@ import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class RelativeService {
 
-  adminUrl = 'https://suivid19-api.herokuapp.com/admins';
+  RelativeUrl = 'https://suivid19-api.herokuapp.com/Relatives';
   constructor(private http: HttpClient) { }
 
-  getAdmins() : Observable<Admin[]>{
-    return this.http.get<Admin[]>(this.adminUrl);
+  getRelatives() : Observable<Relative[]>{
+    return this.http.get<Relative[]>(this.RelativeUrl);
   }
 
-  getAdmin(id:number) : Observable<Admin>{
-    return this.http.get<Admin>(this.adminUrl+ '/'+ id);
+  getRelative(id:number) : Observable<Relative>{
+    return this.http.get<Relative>(this.RelativeUrl+ '/'+ id);
   }
 
-  addAdmin (admin: Admin): Observable<Admin> {
-    return this.http.post<Admin>(this.adminUrl, admin)
+  addRelative (Relative: Relative): Observable<Relative> {
+    return this.http.post<Relative>(this.RelativeUrl, Relative)
       /* .pipe(
-        catchError(this.handleError('addHero', admin))
+        catchError(this.handleError('addHero', Relative))
       ) */;
   }
-  private handleError(error: HttpErrorResponse,method:string, admin : Admin) {
+  private handleError(error: HttpErrorResponse,method:string, Relative : Relative) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -37,7 +37,7 @@ export class AdminService {
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
-    // return an observable with a user-facing error message
+    // return an observable with a Relative-facing error message
     return throwError(
       'Something bad happened; please try again later.');
   };

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Admin } from '../../_models/Admin';
+import { Doctor } from '../../_models/Doctor';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -7,26 +7,26 @@ import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
-export class AdminService {
+export class DoctorService {
 
-  adminUrl = 'https://suivid19-api.herokuapp.com/admins';
+  DoctorUrl = 'https://suivid19-api.herokuapp.com/Doctors';
   constructor(private http: HttpClient) { }
 
-  getAdmins() : Observable<Admin[]>{
-    return this.http.get<Admin[]>(this.adminUrl);
+  getDoctors() : Observable<Doctor[]>{
+    return this.http.get<Doctor[]>(this.DoctorUrl);
   }
 
-  getAdmin(id:number) : Observable<Admin>{
-    return this.http.get<Admin>(this.adminUrl+ '/'+ id);
+  getDoctor(id:number) : Observable<Doctor>{
+    return this.http.get<Doctor>(this.DoctorUrl+ '/'+ id);
   }
 
-  addAdmin (admin: Admin): Observable<Admin> {
-    return this.http.post<Admin>(this.adminUrl, admin)
+  addDoctor (Doctor: Doctor): Observable<Doctor> {
+    return this.http.post<Doctor>(this.DoctorUrl, Doctor)
       /* .pipe(
-        catchError(this.handleError('addHero', admin))
+        catchError(this.handleError('addHero', Doctor))
       ) */;
   }
-  private handleError(error: HttpErrorResponse,method:string, admin : Admin) {
+  private handleError(error: HttpErrorResponse,method:string, Doctor : Doctor) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -37,7 +37,7 @@ export class AdminService {
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
     }
-    // return an observable with a user-facing error message
+    // return an observable with a Doctor-facing error message
     return throwError(
       'Something bad happened; please try again later.');
   };
