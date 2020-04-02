@@ -7,5 +7,4 @@ export interface Admin {
     city: string,
     postalCode: number,
     phone: string
-
   }
