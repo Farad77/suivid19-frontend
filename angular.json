@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "suivid"
+  "defaultProject": "suivid",
+  "cli": {
+    "analytics": false
+  }
 }
