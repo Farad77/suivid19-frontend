@@ -16,17 +16,6 @@
   "private": true,
   "dependencies": {
     "@angular-devkit/schematics": "^8.3.26",
-<<<<<<< HEAD
-    "@angular/animations": "^9.1.0",
-    "@angular/cdk": "^8.2.3",
-    "@angular/common": "^9.1.0",
-    "@angular/compiler": "^9.1.0",
-    "@angular/core": "^9.1.0",
-    "@angular/forms": "^9.1.0",
-    "@angular/platform-browser": "^9.1.0",
-    "@angular/platform-browser-dynamic": "^9.1.0",
-    "@angular/router": "^9.1.0",
-=======
     "@angular/animations": "^8.0.3",
     "@angular/cdk": "^8.0.2",
     "@angular/common": "^8.0.3",
@@ -36,7 +25,6 @@
     "@angular/platform-browser": "^8.0.3",
     "@angular/platform-browser-dynamic": "^8.0.3",
     "@angular/router": "^8.0.3",
->>>>>>> 7ee6a94b32bebff10ae10bf4380594190c39225c
     "@asymmetrik/ngx-leaflet": "5.0.1",
     "@nebular/eva-icons": "5.0.0-beta.7.hotfix",
     "@nebular/theme": "5.0.0-beta.7.hotfix",
@@ -59,48 +47,33 @@
     "rxjs-compat": "6.4.0",
     "tslib": "^1.11.1",
     "typeface-open-sans": "0.0.54",
-<<<<<<< HEAD
-    "zone.js": "~0.10.3"
-=======
     "zone.js": "~0.9.1",
-<<<<<<< HEAD
     "typescript": "~3.4.5",
     "@angular/cli": "^9.1.0",
     "@angular/compiler-cli": "^8.2.14"
-  },
+  }, 
   "devDependencies": {
     "@angular-devkit/build-angular": "^0.803.24",
     "@angular/cli": "^9.1.0",
     "@angular/compiler-cli": "^8.2.14",
     "@angular/language-service": "^8.0.3",
     "@schematics/angular": "^8.0.6",
-=======
-    "typescript": "~3.4.5"
->>>>>>> 7ee6a94b32bebff10ae10bf4380594190c39225c
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.26",
-    "@angular/cli": "^9.1.0",
-    "@angular/compiler-cli": "^9.1.0",
-    "@angular/language-service": "^9.1.0",
-    "@schematics/angular": "^8.3.26",
->>>>>>> c046fa99f1b0006559e39da07af58d2f495642b5
     "@types/echarts": "^4.1.8",
-    "@types/jasmine": "^3.5.10",
+    "@types/jasmine": "^3.3.16",
     "@types/jasminewd2": "^2.0.8",
-    "@types/node": "^12.12.34",
+    "@types/node": "^12.0.12",
     "codelyzer": "~5.0.1",
     "enhanced-resolve": "^3.3.0",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "^4.4.1",
     "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "^2.1.1",
+    "karma-coverage-istanbul-reporter": "^2.0.6",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.5.3",
     "protractor": "^5.4.3",
     "ts-node": "~8.2.0",
     "tslint": "~5.16.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.4.5"
   }
 }
