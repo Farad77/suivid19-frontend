@@ -1,0 +1,14 @@
+@import 'themes';
+@import '~@nebular/theme/styles/globals';
+@import '~@uibakery/kit/styles.scss';
+@import 'responsive';
+
+$nb-enable-css-custom-properties: true;
+$nb-enabled-themes: (light);
+
+@include nb-install() {
+  @include nb-theme-global();
+  @include install-bakery-styles();
+  @include install-responsive-styles();
+};
+/* You can add global styles to this file, and also import other style files */

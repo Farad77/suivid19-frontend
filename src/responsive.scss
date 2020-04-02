@@ -1,0 +1,80 @@
+$breakpoints: (
+  lg: 1024px,
+  md: 768px,
+  sm: 480px,
+  xs: 320px,
+);
+
+// Generates style content based on passed breakpoint
+@mixin media-query($mq-breakpoint, $mq-breakpoints: $breakpoints) {
+
+  @if map-has-key($mq-breakpoints, $mq-breakpoint) {
+    @media (max-width: #{map-get($mq-breakpoints, $mq-breakpoint)}) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+@function nb-get-breakpoints() {
+  @return 'xl', 'lg', 'md', 'sm', 'xs';
+}
+
+@function nb-get-btn-appearances() {
+  @return 'filled', 'outline', 'ghost', 'hero';
+}
+
+@mixin install-responsive-styles() {
+  @each $bp in nb-get-breakpoints() {
+    // Use mixin to add content to media queries
+    @include media-query($bp) {
+      @each $size in nb-get-sizes() {
+        @include mq-input($bp, $size);
+        @include mq-button($bp, $size);
+      }
+    }
+  }
+}
+
+@mixin mq-button($bp, $size) {
+
+  // Add `appearance` to selector to override default `medium` size value
+  @each $appearance in nb-get-btn-appearances() {
+    [nbButton].appearance-#{$appearance} {
+      &.size-#{$bp}-#{$size} {
+        font-size: var(--#{button-#{$size}-text-font-size});
+        line-height: var(--#{button-#{$size}-text-line-height});
+        padding: var(--#{button-filled-#{$size}-padding});
+
+        > nb-icon {
+          font-size: var(--#{button-#{$size}-text-font-size});
+          height: var(--#{button-#{$size}-icon-size});
+          width: var(--#{button-#{$size}-icon-size});
+        }
+      }
+    }
+  }
+}
+
+@mixin mq-input($bp, $size) {
+
+  [nbInput] {
+    &.size-#{$bp}-#{$size} {
+      font-size: var(--#{input-#{$size}-text-font-size});
+      font-weight: var(--#{input-#{$size}-text-font-weight});
+      line-height: var(--#{input-#{$size}-text-line-height});
+      padding: var(--#{input-#{$size}-padding});
+
+      &:not(.input-full-width) {
+        max-width: var(--#{input-#{$size}-max-width});
+      }
+
+      &::placeholder {
+        font-size: var(--#{input-#{$size}-placeholder-text-font-size});
+        font-weight: var(--#{input-#{$size}-placeholder-text-font-weight});
+        line-height: var(--#{input-#{$size}-placeholder-text-line-height});
+      }
+    }
+  }
+}
