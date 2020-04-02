@@ -9,6 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
+  "engines": {
+    "node": ">= 12.16.1"
+  },
   "private": true,
   "dependencies": {
     "@angular-devkit/schematics": "^8.3.26",
