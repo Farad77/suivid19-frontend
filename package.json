@@ -9,9 +9,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
-  "engines": {
-    "node": ">= 12.16.1"
-  },
   "private": true,
   "dependencies": {
     "@angular-devkit/schematics": "^8.3.26",
@@ -45,28 +42,5 @@
     "tslib": "^1.11.1",
     "typeface-open-sans": "0.0.54",
     "zone.js": "~0.9.1"
-  },
-  "devDependencies": {
-    "@angular-devkit/build-angular": "^0.803.24",
-    "@angular/cli": "^8.0.6",
-    "@angular/compiler-cli": "^8.0.3",
-    "@angular/language-service": "^8.0.3",
-    "@schematics/angular": "^8.0.6",
-    "@types/echarts": "^4.1.8",
-    "@types/jasmine": "^3.3.16",
-    "@types/jasminewd2": "^2.0.8",
-    "@types/node": "^12.0.12",
-    "codelyzer": "~5.0.1",
-    "jasmine-core": "~3.4.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "^4.4.1",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "^2.0.6",
-    "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.5.3",
-    "protractor": "^5.4.3",
-    "ts-node": "~8.2.0",
-    "tslint": "~5.16.0",
-    "typescript": "~3.4.5"
   }
 }
