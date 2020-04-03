@@ -1,72 +1,34 @@
-import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NbEvaIconsModule } from '@nebular/eva-icons';
-import {
-  NbThemeModule,
-  NbLayoutModule,
-  NbSidebarModule,
-  NbMenuModule,
-  NbIconModule,
-  NbButtonModule,
-  NbDatepickerModule,
-  NbMediaBreakpoint,
-} from '@nebular/theme';
+import { RouterModule } from '@angular/router';
+import { ToastrModule } from "ngx-toastr";
+
+import { SidebarModule } from './sidebar/sidebar.module';
+import { FooterModule } from './shared/footer/footer.module';
+import { NavbarModule} from './shared/navbar/navbar.module';
+import { FixedPluginModule} from './shared/fixedplugin/fixedplugin.module';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { SharedModule } from './shared/shared.module';
-import { LIGHT_THEME } from './theme';
-import { StoreModule } from '@ngrx/store';
-import { RootEffects } from './state/root.effects';
-import { EffectsModule } from '@ngrx/effects';
+import { AppRoutes } from './app.routing';
 
-const mediaBreakpoints: NbMediaBreakpoint[] = [
-  {
-    name: 'xs',
-    width: 0,
-  },
-  {
-    name: 'sm',
-    width: 320,
-  },
-  {
-    name: 'md',
-    width: 480,
-  },
-  {
-    name: 'lg',
-    width: 768,
-  },
-  {
-    name: 'xl',
-    width: 1024,
-  },
-];
+import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    AdminLayoutComponent
   ],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
-    HttpClientModule,
-    CommonModule,
-    NbThemeModule.forRoot({ name: 'light' }, [LIGHT_THEME], mediaBreakpoints),
-    NbLayoutModule,
-    NbSidebarModule.forRoot(),
-    NbMenuModule.forRoot(),
-    NbDatepickerModule.forRoot(),
-    NbEvaIconsModule,
-    NbIconModule,
-    SharedModule,
-    AppRoutingModule,
-    NbButtonModule,
-    StoreModule.forRoot([]),
-    EffectsModule.forRoot(RootEffects),
+    RouterModule.forRoot(AppRoutes,{
+      useHash: true
+    }),
+    SidebarModule,
+    NavbarModule,
+    ToastrModule.forRoot(),
+    FooterModule,
+    FixedPluginModule
   ],
   providers: [],
   bootstrap: [AppComponent]
