@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'app/_services/auth/auth.service';
+import {MatTabsModule} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-login',
