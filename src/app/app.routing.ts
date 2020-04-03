@@ -3,6 +3,7 @@ import { Routes } from '@angular/router';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './_services/auth.guard';
+import { PageGuard } from './_services/page.guard';
 
 export const AppRoutes: Routes = [
   {
@@ -14,13 +15,13 @@ export const AppRoutes: Routes = [
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-    canActivate: [AuthGuard],
-    canLoad: [AuthGuard],
+   /*  canActivate: [PageGuard],
+    canLoad: [PageGuard], */
   }, {
     path: '',
     component: AdminLayoutComponent,
-    canActivate: [AuthGuard],
-    canLoad: [AuthGuard],
+   /*  canActivate: [PageGuard],
+    canLoad: [PageGuard], */
     children: [
         {
       path: '',
@@ -29,6 +30,5 @@ export const AppRoutes: Routes = [
   {
     path: '**',
     redirectTo: 'login'
-    
   }
 ]

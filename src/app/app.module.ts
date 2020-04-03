@@ -38,16 +38,17 @@ import { AuthService } from './_services/auth/auth.service';
     FixedPluginModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [
+    AuthGuard,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
     },
-    AuthGuard, ],
+     ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
