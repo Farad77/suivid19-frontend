@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
-import {MatStepperModule} from '@angular/material/stepper';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
@@ -17,6 +16,7 @@ import { UpgradeComponent }         from '../../pages/upgrade/upgrade.component'
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ɵHttpInterceptingHandler } from '@angular/common/http';
+import { MaterialModule } from 'app/_services/material.module';
 
 @NgModule({
   imports: [
@@ -25,7 +25,7 @@ import { ɵHttpInterceptingHandler } from '@angular/common/http';
     FormsModule,
     NgbModule,
     ReactiveFormsModule,
-    MatStepperModule
+    MaterialModule
   ],
   declarations: [
     

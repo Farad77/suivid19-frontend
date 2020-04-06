@@ -13,8 +13,9 @@
               <ng-template matStepLabel>Premiere Question</ng-template>
               <mat-form-field>
                 <mat-label>Avez-vous de la fièvre ? </mat-label>
-                <input type="checkbox" matInput formControlName="firstCtrl" required>
-              </mat-form-field>
+                <mat-form-fiel-control></mat-form-fiel-control>
+                <input type="checkbox" formControlName="firstCtrl" required>
+              </mat-form-field> 
               <div>
                 <button mat-button matStepperNext>Next</button>
               </div>
@@ -25,6 +26,7 @@
               <ng-template matStepLabel>Deuxieme Question</ng-template>
               <mat-form-field>
                 <mat-label>Address</mat-label>
+                <mat-form-fiel-control></mat-form-fiel-control>
                 <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
                        required>
               </mat-form-field>
@@ -39,7 +41,7 @@
             <p>You are now done.</p>
             <div>
               <button mat-button matStepperPrevious>Back</button>
-              <button mat-button (click)="stepper.reset()">Reset</button>
+              <button mat-button (click)="stepper.reset()">Validate</button>
             </div>
           </mat-step>
         </mat-vertical-stepper>

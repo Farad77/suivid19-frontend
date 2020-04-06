@@ -14,16 +14,15 @@ export class QuestionnaireComponent implements OnInit {
   isLinear = false;
   firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
+  
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required],
-      id:1
+      firstCtrl: ['', Validators.required]
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required],
-      id:2
+      secondCtrl: ['', Validators.required]
     });
   }
 }

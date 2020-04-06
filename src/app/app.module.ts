@@ -2,7 +2,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ToastrModule } from "ngx-toastr";
-import {MatStepperModule} from '@angular/material/stepper';
 
 import { SidebarModule } from './sidebar/sidebar.module';
 import { FooterModule } from './shared/footer/footer.module';
@@ -19,6 +18,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './_services/auth.guard';
 import { TokenInterceptor } from './_services/token.interceptor';
 import { AuthService } from './_services/auth/auth.service';
+import { MaterialModule } from './_services/material.module';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,7 @@ import { AuthService } from './_services/auth/auth.service';
     RouterModule.forRoot(AppRoutes,{
       useHash: true
     }),
+    NgModule,
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
@@ -39,7 +40,7 @@ import { AuthService } from './_services/auth/auth.service';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MatStepperModule
+    MaterialModule
   ],
   providers: [
     AuthGuard,
