@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit,} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { MaterialModule } from 'app/_services/material.module';
 
 /**
  * @title Questionnaire
@@ -7,7 +8,7 @@ import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 @Component({
   selector: 'app-questionnaire',
   templateUrl: 'questionnaire.component.html',
-  styleUrls: ['questionnaire.component.css']
+  styleUrls: ['questionnaire.component.css'],
 })
 export class QuestionnaireComponent implements OnInit {
   isLinear = false;
