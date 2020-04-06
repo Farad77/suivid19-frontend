@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormGroup, FormBuilder } from '@angular/forms';
+import {MatStepperModule} from '@angular/material/stepper';
 
 import { AdminLayoutRoutes } from './admin-layout.routing';
 
@@ -23,6 +24,8 @@ import { ɵHttpInterceptingHandler } from '@angular/common/http';
     RouterModule.forChild(AdminLayoutRoutes),
     FormsModule,
     NgbModule,
+    ReactiveFormsModule,
+    MatStepperModule
   ],
   declarations: [
     

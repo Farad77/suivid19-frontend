@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+
 
 /**
  * @title Questionnaire
@@ -11,17 +12,18 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class QuestionnaireComponent implements OnInit {
   isLinear = false;
-  firstFormGroup: FormGroup;
+  firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
-
   constructor(private _formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required],
+      id:1
     });
     this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      secondCtrl: ['', Validators.required],
+      id:2
     });
   }
 }
