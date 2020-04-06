@@ -31,7 +31,6 @@ import { MaterialModule } from './_services/material.module';
     RouterModule.forRoot(AppRoutes,{
       useHash: true
     }),
-    NgModule,
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
