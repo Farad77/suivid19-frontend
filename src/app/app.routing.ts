@@ -12,11 +12,7 @@ export const AppRoutes: Routes = [
     component: LoginComponent,
     canActivate: [AuthGuard],
   },
-  {
-    path: 'questionnaire',
-    component: QuestionnaireComponent,
-    pathMatch: 'full'
-  },
+  
   {
     path: '',
     redirectTo: 'dashboard',
