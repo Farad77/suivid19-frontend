@@ -12,7 +12,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatInputModule,
     MatButtonModule,
     MatLineModule,
-    MatAutocompleteModule,
+    MatAutocompleteModule
   ],
 })
 export class MaterialModule { }
