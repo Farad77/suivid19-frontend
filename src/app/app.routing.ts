@@ -4,12 +4,18 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './_services/auth.guard';
 import { PageGuard } from './_services/page.guard';
+import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.component';
 
 export const AppRoutes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
     canActivate: [AuthGuard],
+  },
+  {
+    path: 'questionnaire',
+    component: QuestionnaireComponent,
+    pathMatch: 'full'
   },
   {
     path: '',

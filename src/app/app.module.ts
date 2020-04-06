@@ -19,6 +19,7 @@ import { AuthGuard } from './_services/auth.guard';
 import { TokenInterceptor } from './_services/token.interceptor';
 import { AuthService } from './_services/auth/auth.service';
 import { MaterialModule } from './_services/material.module';
+import { MatFormFieldControl } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,6 @@ import { MaterialModule } from './_services/material.module';
     RouterModule.forRoot(AppRoutes,{
       useHash: true
     }),
-    NgModule,
     SidebarModule,
     NavbarModule,
     ToastrModule.forRoot(),
@@ -40,7 +40,6 @@ import { MaterialModule } from './_services/material.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    MaterialModule
   ],
   providers: [
     AuthGuard,
@@ -49,7 +48,7 @@ import { MaterialModule } from './_services/material.module';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,
       multi: true
-    },
+    }
      ],
   bootstrap: [AppComponent]
 })
