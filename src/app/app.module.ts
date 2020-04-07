@@ -20,11 +20,16 @@ import { TokenInterceptor } from './_services/token.interceptor';
 import { AuthService } from './_services/auth/auth.service';
 import { MaterialModule } from './_services/material.module';
 import { MatFormFieldControl } from '@angular/material/form-field';
+import { DialogOverviewExampleDialog } from './pages/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
+    DialogOverviewExampleDialog
+  ],
+  entryComponents: [
+    DialogOverviewExampleDialog
   ],
   imports: [
     BrowserAnimationsModule,
