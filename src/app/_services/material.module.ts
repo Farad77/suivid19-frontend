@@ -5,8 +5,9 @@ import {MatInputModule} from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatLineModule } from '@angular/material/core';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogModule, MatDialogClose} from '@angular/material/dialog';
 @NgModule({
+  
   exports: [
     MatStepperModule,
     MatFormFieldModule,
@@ -14,7 +15,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
     MatButtonModule,
     MatLineModule,
     MatAutocompleteModule,
-    MatDialog
+    MatDialogModule,
   ],
 })
 export class MaterialModule { }

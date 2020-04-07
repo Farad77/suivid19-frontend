@@ -20,12 +20,11 @@ import { TokenInterceptor } from './_services/token.interceptor';
 import { AuthService } from './_services/auth/auth.service';
 import { MaterialModule } from './_services/material.module';
 import { MatFormFieldControl } from '@angular/material/form-field';
-
 @NgModule({
   declarations: [
     AppComponent,
     AdminLayoutComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserAnimationsModule,

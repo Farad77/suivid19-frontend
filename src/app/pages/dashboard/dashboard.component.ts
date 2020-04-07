@@ -1,44 +1,12 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import Chart from 'chart.js';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { DialogData } from './dashboard.card.modal';
 
-export interface DialogData {
-  animal: string;
-  name: string;
-}
-
-
-/**
- * @title Dialog Overview
- */
-@Component({
-  selector: 'dashboard.component',
-  templateUrl: 'dashboard.component.html',
-})
-export class DashboardComponentModal {
-
-  animal: string;
-  name: string;
-
-  constructor(public dialog: MatDialog) {}
-
-  openDialog(){
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-      width: '250px',
-      data: {name: this.name, animal: this.animal}
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      this.animal = result;
-    });
-  }
-
-}
 
 @Component({
-  selector: 'dashboard.component-dialog',
-  templateUrl: 'dashboard.component-dialog.html',
+  selector: 'dialog-overview-example-dialog',
+  templateUrl: 'dialog-overview-example-dialog.html',
 })
 export class DialogOverviewExampleDialog {
 
@@ -54,9 +22,10 @@ export class DialogOverviewExampleDialog {
 @Component({
     selector: 'dashboard-cmp',
     moduleId: module.id,
-    templateUrl: 'dashboard.component.html'
+    templateUrl: 'dashboard.component.html',
+    
+    styleUrls: ['dialog-overview-example.css'],
 })
-
 export class DashboardComponent implements OnInit{
 
   public canvas : any;
@@ -64,7 +33,23 @@ export class DashboardComponent implements OnInit{
   public chartColor;
   public chartEmail;
   public chartHours;
+  animal: string;
+  name: string;
 
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.animal = result;
+    });
+  }
+  
     ngOnInit(){
       this.chartColor = "#FFFFFF";
 
