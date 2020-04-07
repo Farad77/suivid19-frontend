@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { DashboardComponent } from '../../pages/dashboard/dashboard.component';
+import { DashboardComponentModal } from '../../pages/dashboard/dashboard.component.modal';
 import { UserComponent } from '../../pages/user/user.component';
 import { TableComponent } from '../../pages/table/table.component';
 import { QuestionnaireComponent } from '../../pages/questionnaire/questionnaire.component';
@@ -10,6 +11,7 @@ import { NotificationsComponent } from '../../pages/notifications/notifications.
 import { UpgradeComponent } from '../../pages/upgrade/upgrade.component';
 export const AdminLayoutRoutes: Routes = [
     { path: 'dashboard',      component: DashboardComponent },
+    { path: 'dashboardModal', component: DashboardComponentModal },
     { path: 'user',           component: UserComponent },
     { path: 'table',          component: TableComponent },
     { path: 'icons',          component: IconsComponent },
