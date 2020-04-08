@@ -23,9 +23,9 @@ export class LoginComponent implements OnInit {
   }
   login(){
     if(this.formGroup.valid){
+      console.log(this.formGroup.value)
       this._authService.login(this.formGroup.value).subscribe();
-        //console.log(result.access_to)
     }
-  }
+  } 
 
 }

@@ -21,6 +21,7 @@ import { AuthService } from './_services/auth/auth.service';
 import { MaterialModule } from './_services/material.module';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { DialogOverviewExampleDialog } from './pages/dashboard/dashboard.component';
+import { PageGuard } from './_services/page.guard';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +48,7 @@ import { DialogOverviewExampleDialog } from './pages/dashboard/dashboard.compone
   ],
   providers: [
     AuthGuard,
+    PageGuard,
     AuthService,
     {
       provide: HTTP_INTERCEPTORS,

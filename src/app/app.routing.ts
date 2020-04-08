@@ -7,6 +7,7 @@ import { PageGuard } from './_services/page.guard';
 import { QuestionnaireComponent } from './pages/questionnaire/questionnaire.component';
 
 export const AppRoutes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '/login' },
   {
     path: 'login',
     component: LoginComponent,
@@ -17,13 +18,13 @@ export const AppRoutes: Routes = [
     path: '',
     redirectTo: 'dashboard',
     pathMatch: 'full',
-   /*  canActivate: [PageGuard],
-    canLoad: [PageGuard], */
+    canActivate: [PageGuard],
+    canLoad: [PageGuard], 
   }, {
     path: '',
     component: AdminLayoutComponent,
-   /*  canActivate: [PageGuard],
-    canLoad: [PageGuard], */
+    canActivate: [PageGuard],
+    canLoad: [PageGuard],
     children: [
         {
       path: '',
@@ -31,6 +32,6 @@ export const AppRoutes: Routes = [
   }]},
   {
     path: '**',
-    redirectTo: 'login'
+    redirectTo: 'dashboard'
   }
 ]

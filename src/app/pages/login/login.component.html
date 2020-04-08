@@ -1,13 +1,6 @@
 <div class="login-page">
   <div class="form">
-    <form class="register-form"  >
-      <h1 class="title">Inscription</h1>
-      <input type="text" placeholder="name"/>
-      <input type="password" placeholder="password"/>
-      <input type="text" placeholder="email address"/>
-      <button>create</button>
-      <p class="message">Déjà membre? <a value="a" class="message">Connectez-vous!</a></p>
-    </form>
+    
     <form class="login-form" [formGroup]="formGroup" (ngSubmit)="login()">
       <h1 class="title">Connexion</h1>
       <input type="text" placeholder="username" formControlName="username"/>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Agent } from '../../_models/Agent';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable, throwError, BehaviorSubject, of } from 'rxjs';
+import { Observable, throwError, BehaviorSubject, of, iif } from 'rxjs';
 import { catchError, tap, mapTo } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Tokens } from '../../_models/Tokens';
@@ -21,7 +21,6 @@ export class AuthService {
 
   private helper = new JwtHelperService();
   private readonly JWT_TOKEN = 'jwt-token';
-  private readonly REFRESH_TOKEN = 'jwt-token';
   private loggedUser:string;
 
 
@@ -33,9 +32,10 @@ export class AuthService {
   }
 
   login(user : {username:string, password:string}):Observable<boolean>{
+    console.log(user);
     return this.http.post<any>(this.LoginUrl, user)
     .pipe(
-      tap(tokens => this.doLoginUser(user.username, tokens)),
+      tap(token =>{this.doLoginUser(user.username, token.access_token)} ),
       mapTo(true),
       catchError(error => {
         alert(error.error);
@@ -64,35 +64,22 @@ export class AuthService {
     this.removeTokens();
   }
 
-  isLoggedIn(){
-    return !!this.getJwtToken();
-  }
+  
   getJwtToken():any{
     return localStorage.getItem(this.JWT_TOKEN);
   }
-  private doLoginUser(username:string, tokens:Tokens){
+  isLoggedIn(){
+    console.log(this.getJwtToken())
+    return !!this.getJwtToken();
+  }
+  private doLoginUser(username:string, token:string){
     this.loggedUser = username;
-    this.storeToken(tokens);
+    this.storeToken(token);
   }
-  refreshToken() {
-    return this.http.post<any>(`https://suivid19-api.herokuapp.com/auth/refresh`, {
-      'refreshToken': this.getRefreshToken()
-    }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.jwt);
-    }));
-  }
-  getRefreshToken(){
-    return localStorage.getItem(this.REFRESH_TOKEN)
-  }
-  storeToken(tokens:Tokens){
-    localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
-  }
-  private storeJwtToken(jwt: string) {
-    localStorage.setItem(this.JWT_TOKEN, jwt);
+  storeToken(tokens:string){
+    localStorage.setItem(this.JWT_TOKEN, tokens);
   }
   private removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
-    localStorage.removeItem(this.REFRESH_TOKEN);
   }
 }

@@ -15,6 +15,7 @@ export class PageGuard implements CanActivate, CanLoad {
   }
 
   canLoad() {
+    console.log(this.authService.getJwtToken())
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/login']);
     }
