@@ -22,6 +22,9 @@ import { MaterialModule } from './_services/material.module';
 import { MatFormFieldControl } from '@angular/material/form-field';
 import { DialogOverviewExampleDialog } from './pages/dashboard/dashboard.component';
 import { PageGuard } from './_services/page.guard';
+import { BrowserModule } from '@angular/platform-browser';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +36,7 @@ import { PageGuard } from './_services/page.guard';
     DialogOverviewExampleDialog
   ],
   imports: [
+    BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes,{
       useHash: true
@@ -45,6 +49,8 @@ import { PageGuard } from './_services/page.guard';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    MaterialModule,
+    FlexLayoutModule 
   ],
   providers: [
     AuthGuard,

@@ -32,7 +32,6 @@ export class AuthService {
   }
 
   login(user : {username:string, password:string}):Observable<boolean>{
-    console.log(user);
     return this.http.post<any>(this.LoginUrl, user)
     .pipe(
       tap(token =>{this.doLoginUser(user.username, token.access_token)} ),
@@ -69,7 +68,6 @@ export class AuthService {
     return localStorage.getItem(this.JWT_TOKEN);
   }
   isLoggedIn(){
-    console.log(this.getJwtToken())
     return !!this.getJwtToken();
   }
   private doLoginUser(username:string, token:string){
