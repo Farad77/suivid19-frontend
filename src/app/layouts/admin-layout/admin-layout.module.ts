@@ -17,6 +17,9 @@ import { UpgradeComponent }         from '../../pages/upgrade/upgrade.component'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ɵHttpInterceptingHandler } from '@angular/common/http';
 import { MaterialModule } from 'app/_services/material.module';
+import { SurveyService } from 'app/_services/survey/survey.service';
+import { SurveyChoiceService } from 'app/_services/surveyChoice/survey-choice.service';
+import { SurveyAnswerService } from 'app/_services/surveyAnswer/survey-answer.service';
 
 @NgModule({
   imports: [
@@ -37,6 +40,11 @@ import { MaterialModule } from 'app/_services/material.module';
     IconsComponent,
     MapsComponent,
     NotificationsComponent,
+  ],
+  providers:[
+    SurveyService,
+    SurveyChoiceService,
+    SurveyAnswerService
   ]
 })
 

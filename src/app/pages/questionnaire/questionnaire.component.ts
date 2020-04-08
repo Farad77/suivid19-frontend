@@ -1,6 +1,7 @@
 import {Component, OnInit,} from '@angular/core';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import { MaterialModule } from 'app/_services/material.module';
+import { SurveyService } from 'app/_services/survey/survey.service';
 
 /**
  * @title Questionnaire
@@ -15,7 +16,7 @@ export class QuestionnaireComponent implements OnInit {
   firstFormGroup:  FormGroup;
   secondFormGroup: FormGroup;
   
-  constructor(private _formBuilder: FormBuilder) {}
+  constructor(private _formBuilder: FormBuilder, private _SurveyServices: SurveyService) {}
 
   ngOnInit() {
     this.firstFormGroup = this._formBuilder.group({
