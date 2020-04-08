@@ -22,6 +22,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTableModule} from '@angular/material/table';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
   imports: [
     CommonModule,
@@ -42,7 +43,8 @@ import {MatCardModule} from '@angular/material/card';
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
  ],
   exports: [
     MatStepperModule,
@@ -68,10 +70,12 @@ import {MatCardModule} from '@angular/material/card';
     MatTooltipModule,
     MatTableModule,
     MatPaginatorModule,
-    MatCardModule
+    MatCardModule,
+    MatSnackBarModule
   ],
   providers: [
     MatDatepickerModule,
+    MatSnackBarModule
  ]
 })
 export class MaterialModule { }

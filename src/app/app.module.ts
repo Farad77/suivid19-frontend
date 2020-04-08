@@ -19,7 +19,6 @@ import { AuthGuard } from './_services/auth.guard';
 import { TokenInterceptor } from './_services/token.interceptor';
 import { AuthService } from './_services/auth/auth.service';
 import { MaterialModule } from './_services/material.module';
-import { MatFormFieldControl } from '@angular/material/form-field';
 import { DialogOverviewExampleDialog } from './pages/dashboard/dashboard.component';
 import { PageGuard } from './_services/page.guard';
 import { BrowserModule } from '@angular/platform-browser';
@@ -30,7 +29,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     AppComponent,
     AdminLayoutComponent,
     LoginComponent,
-    DialogOverviewExampleDialog
+    DialogOverviewExampleDialog,
   ],
   entryComponents: [
     DialogOverviewExampleDialog
