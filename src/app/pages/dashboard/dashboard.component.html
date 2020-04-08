@@ -11,21 +11,13 @@
           <div class="col-7 col-md-8">
             <div class="numbers">
               <p class="card-category">Dernière Température Relevée</p>
-              <p class="card-title">37 C°<p>
-              <ol>
+              
                 <li>
-                  <mat-form-field>
-                    <mat-label>What's your name?</mat-label>
-                    <input matInput [(ngModel)]="name">
-                  </mat-form-field>
-                </li>
-                <li>
-                  <button mat-raised-button (click)="openDialog()">Pick one</button>
+                  <button mat-raised-button (click)="openDialog()"><p class="card-title">37 C°<p></button>
                 </li>
                 <li *ngIf="animal">
                   You chose: <i>{{animal}}</i>
                 </li>
-              </ol>
             </div>
           </div>
         </div>
