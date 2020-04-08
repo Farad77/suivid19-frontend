@@ -7,23 +7,20 @@
       </div>
       <div class="card-body">
         <!--contenu-->
-        <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-          {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-        </button>
-        <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-vertical-stepper [linear]="isLinear" #stepper *ngFor="let question of listQuestion">
           <mat-step [stepControl]="firstFormGroup">
             <form [formGroup]="firstFormGroup">
-              <ng-template matStepLabel>Fill out your name</ng-template>
+              <ng-template matStepLabel>{{ question.title }}</ng-template>
               <mat-form-field>
-                <mat-label>Name</mat-label>
-                <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+                <mat-label>{{ question.description }}</mat-label>
+                <input matInput placeholder="Saisissez votre réponse" formControlName="firstCtrl" required>
               </mat-form-field>
               <div>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperNext>Suivant</button>
               </div>
             </form>
           </mat-step>
-          <mat-step [stepControl]="secondFormGroup">
+          <!--<mat-step [stepControl]="secondFormGroup">
             <form [formGroup]="secondFormGroup">
               <ng-template matStepLabel>Fill out your address</ng-template>
               <mat-form-field>
@@ -36,7 +33,7 @@
                 <button mat-button matStepperNext>Next</button>
               </div>
             </form>
-          </mat-step>
+          </mat-step>-->
           <mat-step>
             <ng-template matStepLabel>Done</ng-template>
             <p>You are now done.</p>
