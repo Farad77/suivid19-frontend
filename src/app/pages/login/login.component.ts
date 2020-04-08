@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'app/_services/auth/auth.service';
 import {MatTabsModule} from '@angular/material/tabs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +11,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 })
 export class LoginComponent implements OnInit {
   formGroup : FormGroup;
-  constructor(private _authService:AuthService) { }
+  constructor(private _authService:AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.initForm();
@@ -23,9 +24,16 @@ export class LoginComponent implements OnInit {
   }
   login(){
     if(this.formGroup.valid){
-      console.log(this.formGroup.value)
-      this._authService.login(this.formGroup.value).subscribe();
+      this.showLoading();
+      this._authService.login(this.formGroup.value).subscribe(success => {
+        if (success) {
+          this.router.navigate(['/dashboard']);
+        }
+      });
     }
   } 
+  showLoading(){
+    
+  }
 
 }
