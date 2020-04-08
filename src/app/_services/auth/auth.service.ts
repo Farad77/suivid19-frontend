@@ -59,12 +59,12 @@ export class AuthService {
       })
     ) */
   }
+  
   private doLogoutUser(){
     this.loggedUser = null;
     this.removeTokens();
   }
 
-  
   getJwtToken():any{
     return localStorage.getItem(this.JWT_TOKEN);
   }

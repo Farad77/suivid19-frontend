@@ -27,8 +27,9 @@ export class NavbarComponent implements OnInit{
         this.sidebarVisible = false;
     }
     public logout(){
-      alert('Logging out');
+      alert('Déconnexion...');
       this._authService.logout();
+      this.router.navigate(['/login']);
   }
 
     ngOnInit(){
