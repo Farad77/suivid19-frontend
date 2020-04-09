@@ -7,26 +7,27 @@ import { Observable, throwError } from 'rxjs';
 })
 export class TemperatureService {
 
-  TemperatureUrl = 'https://suivid19-api.herokuapp.com/temperature/{patient}';
+  TemperatureUrl = 'https://suivid19-api.herokuapp.com/patient';
   constructor(private http: HttpClient) { }
 
   //this._TemperatureServices.getTemperatures().subscribe(data => {this.users = data;  console.log(this.users)  });
-  getTemperatures() : Observable<Temperature[]>{
+  getTemperatures(): Observable<Temperature[]> {
     return this.http.get<Temperature[]>(this.TemperatureUrl);
   }
 
-  getTemperature(id:number) : Observable<Temperature>{
-    return this.http.get<Temperature>(this.TemperatureUrl+ '/'+ id);
+  getTemperature(id: number): Observable<Temperature> {
+    return this.http.get<Temperature>(this.TemperatureUrl + '/' + id + '/temperatures');
   }
 
   //this._TemperatureServices.addTemperature(AgentObject).subscribe();
-  addTemperature (Temperature: Temperature): Observable<Temperature> {
-    return this.http.post<Temperature>(this.TemperatureUrl, Temperature)
+  addTemperature(id: number, Temperature: Temperature): Observable<Temperature> {
+    return this.http.post<Temperature>(this.TemperatureUrl + '/' + id + 'add/temperature', Temperature)
       /* .pipe(
         catchError(this.handleError())
       )  */;
   }
-  private handleError(error: HttpErrorResponse,method:string, Temperature : Temperature) {
+
+  private handleError(error: HttpErrorResponse, method: string, Temperature: Temperature) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
