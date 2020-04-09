@@ -5,7 +5,9 @@ import { Observable, throwError, BehaviorSubject, of, iif } from 'rxjs';
 import { catchError, tap, mapTo } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Tokens } from '../../_models/Tokens';
-
+import * as jwt_decode from 'jwt-decode';
+import { User } from 'app/_models/User';
+import { ThrowStmt } from '@angular/compiler';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,8 +23,8 @@ export class AuthService {
 
   private helper = new JwtHelperService();
   private readonly JWT_TOKEN = 'jwt-token';
-  private loggedUser:string;
-
+  private loggedUser:string;;
+  private idUser:string ;
 
   public user:Observable<any>;
   private userData = new BehaviorSubject(null);
@@ -71,8 +73,24 @@ export class AuthService {
     return !!this.getJwtToken();
   }
   private doLoginUser(username:string, token:string){
-    this.loggedUser = username;
-    this.storeToken(token);
+    let code = jwt_decode(token);
+    
+    if(code["role"] == "Patient"){
+      this.storeUser(code);
+      this.storeToken(token);
+    }
+  }
+  storeUser(token:string){
+      this.loggedUser = token["username"];
+      this.idUser = token["userid"];
+      localStorage.setItem(this.loggedUser, token["username"]);
+      localStorage.setItem(this.idUser, token["userid"]);
+  }
+  getLoggedUser():string{
+    return localStorage.getItem(this.loggedUser);
+  }
+  getIdUser():string{
+    return localStorage.getItem(this.idUser);
   }
   storeToken(tokens:string){
     localStorage.setItem(this.JWT_TOKEN, tokens);
