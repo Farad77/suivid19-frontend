@@ -19,10 +19,6 @@ export class TemperatureService {
     return this.http.get<Temperature>(this.TemperatureUrl + '/' + id + '/temperatures');
   }
 
-  deleteTemperature(id: number): Observable<Temperature> {
-    return this.http.get<Temperature>(this.TemperatureUrl + '/' + id + '/del/Temperatures');
-  }
-
   //this._TemperatureServices.addTemperature(AgentObject).subscribe();
   addTemperature(id: number, Temperature: Temperature): Observable<Temperature> {
     return this.http.post<Temperature>(this.TemperatureUrl + '/' + id + 'add/temperature', Temperature)
