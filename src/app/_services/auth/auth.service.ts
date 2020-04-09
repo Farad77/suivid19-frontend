@@ -23,14 +23,15 @@ export class AuthService {
 
   private helper = new JwtHelperService();
   private readonly JWT_TOKEN = 'jwt-token';
-  private loggedUser:string;;
-  private idUser:string ;
+  private readonly loggedUser = 'user';
+  private readonly idUser = 'id';
 
   public user:Observable<any>;
   private userData = new BehaviorSubject(null);
   LoginUrl = 'https://suivid19-api.herokuapp.com/auth/login';
 
   constructor(private http: HttpClient) { 
+    console.log(this.getLoggedUser() )
   }
 
   login(user : {username:string, password:string}):Observable<boolean>{
@@ -62,7 +63,8 @@ export class AuthService {
   }
   
   private doLogoutUser(){
-    this.loggedUser = null;
+    localStorage.removeItem(this.idUser);
+    localStorage.removeItem(this.loggedUser);
     this.removeTokens();
   }
 
@@ -81,9 +83,8 @@ export class AuthService {
     }
   }
   storeUser(token:string){
-      this.loggedUser = token["username"];
-      this.idUser = token["userid"];
-      localStorage.setItem(this.loggedUser, token["username"]);
+      console.log(token["username"]);
+      localStorage.setItem(this.loggedUser, token["username"].toString());
       localStorage.setItem(this.idUser, token["userid"]);
   }
   getLoggedUser():string{
