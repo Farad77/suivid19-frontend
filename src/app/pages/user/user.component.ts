@@ -30,7 +30,7 @@ export class UserComponent implements OnInit{
     }
 
     formInit(){
-        this.formUser = new FormGroup({ lastName: new FormControl(this.user.lastName, [Validators.required]),
+        this.formUser = new FormGroup({ lastName: new FormControl('', [Validators.required]),
                                         firstName: new FormControl('', [Validators.required]),
                                         email: new FormControl('', [Validators.required]),
                                         password: new FormControl('', [Validators.required]),
@@ -38,6 +38,7 @@ export class UserComponent implements OnInit{
                                         city: new FormControl('', [Validators.required]),
                                         postalCode: new FormControl('', [Validators.required]),
                                         phone: new FormControl('', [Validators.required])});
+        //this.formUser.patchValue(this.user);
     }
 
     modifProfil(){

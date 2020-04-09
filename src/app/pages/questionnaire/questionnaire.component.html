@@ -7,8 +7,8 @@
       </div>
       <div class="card-body">
         <!--contenu-->
-        <mat-vertical-stepper [linear]="isLinear" #stepper *ngFor="let question of listQuestion">
-          <mat-step [stepControl]="firstFormGroup">
+        <mat-vertical-stepper [linear]="isLinear" #stepper >
+          <mat-step [stepControl]="firstFormGroup" *ngFor="let question of listQuestion">
             <form [formGroup]="firstFormGroup">
               <ng-template matStepLabel>{{ question.title }}</ng-template>
               <mat-form-field>
