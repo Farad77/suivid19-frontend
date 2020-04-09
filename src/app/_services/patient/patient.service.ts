@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../../_models/User';
+import { Patient } from '../../_models/patient';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -15,41 +15,33 @@ const optionRequete = {
 
 /*Avant d'utiliser ce service il est important de de l'ajouter aux providers du component.module
 @NgModule({
-  providers:[UserService]
+  providers:[patientService]
 })
 et d'ajouter au constructeur component.component.ts
-constructor( private _UserServices: UserService) { }
+constructor( private _patientServices: patientService) { }
 */
-export class UserService {
+export class PatientService {
 
-  UserUrl = 'https://suivid19-api.herokuapp.com/users';
+  patientUrl = 'https://suivid19-api.herokuapp.com/patients';
   constructor(private http: HttpClient) { }
 
-  //this._UserServices.getUsers().subscribe(data => {this.users = data;  console.log(this.users)  });
-  getUsers() : Observable<User[]>{
-    return this.http.get<User[]>(this.UserUrl);
+  //this._patientServices.getpatients().subscribe(data => {this.users = data;  console.log(this.users)  });
+  getPatients() : Observable<Patient[]>{
+    return this.http.get<Patient[]>(this.patientUrl);
   }
 
-  getUser(id:number) : Observable<User>{
-    return this.http.get<User>(this.UserUrl+ '/'+ id);
+  getPatient(id:number) : Observable<Patient>{
+    return this.http.get<Patient>(this.patientUrl+ '/'+ id);
   }
 
-  //this._UserServices.addUser(UserObject).subscribe();
-  addUser (User: User): Observable<User> {
-    return this.http.post<User>(this.UserUrl, User)
+  //this._patientServices.addpatient(patientObject).subscribe();
+  addpatient (patient: Patient): Observable<Patient> {
+    return this.http.post<Patient>(this.patientUrl, patient)
       /* .pipe(
         catchError(this.handleError())
       )  */;
   }
-
-  //this._UserServices.addUser(UserObject).subscribe();
-  putUser (User: User, id: number): Observable<User> {
-    return this.http.put<User>(this.UserUrl+'/'+id, User)
-      /* .pipe(
-        catchError(this.handleError())
-      )  */;
-  }
-  private handleError(error: HttpErrorResponse,method:string, User : User) {
+  private handleError(error: HttpErrorResponse,method:string, patient : Patient) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
