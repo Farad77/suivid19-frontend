@@ -56,7 +56,7 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    var temperatureList= ['10'];
+    var temperatureList= ["10"];
     //Temperature
     this.idUser = this._authService.getIdUser();
     this.id = + this.idUser;
