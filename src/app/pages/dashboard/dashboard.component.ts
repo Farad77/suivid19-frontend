@@ -32,6 +32,7 @@ export class DashboardComponent implements OnInit {
   temperature: any;
   id: number;
   private temperatureList= [];
+  private dateList= [];
   public canvas: any;
   public ctx;
   public chartColor;
@@ -64,6 +65,7 @@ export class DashboardComponent implements OnInit {
       for (var i = 0; i < this.temperature.length; i++) {
         console.log(this.temperature[i].value);
         this.temperatureList.push(`${this.temperature[i].value}`);
+        this.dateList.push(`${this.temperature[i].date}`);
       }
       this.loadcanvas();
     });
@@ -85,20 +87,10 @@ export class DashboardComponent implements OnInit {
       pointBorderWidth: 8,
     };
 
-    var dataSecond = {
-      data: [0, 5, 10, 12, 20, 27, 30, 34, 42, 45, 55, 63],
-      fill: false,
-      borderColor: '#51CACF',
-      backgroundColor: 'transparent',
-      pointBorderColor: '#51CACF',
-      pointRadius: 4,
-      pointHoverRadius: 4,
-      pointBorderWidth: 8
-    };
 
     var speedData = {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      datasets: [dataFirst, dataSecond]
+      labels: this.dateList,
+      datasets: [dataFirst]
     };
 
     var chartOptions = {
