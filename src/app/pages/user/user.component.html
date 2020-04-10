@@ -5,7 +5,7 @@
         <h5 class="card-title">Profil utilisateur</h5>
       </div>
       <div class="card-body" *ngIf="user">
-        <form [formGroup]="formUser" (ngSubmit)="modifProfil()">
+        <form name='user' [formGroup]="formUser" (ngSubmit)="modifProfil()">
           <div class="row">
             <div class="col-md-4 pr-1">
               <div class="form-group">
@@ -46,25 +46,17 @@
                 <label>Code Postal</label>
                 <input type="number" class="form-control" placeholder="Code Postal" formControlName="postalCode">
               </div>
-            </div>
+            </div><!--
             <div class="col-md-4 pr-1">
               <div class="form-group">
                 <label>Numéro de téléphone</label>
                 <input type="text" maxlength="10" minlength="10" class="form-control" placeholder="Numéro de téléphone" formControlName="phone">
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12">
-              <div class="form-group">
-                <label>Information supplémentaire</label>
-                <textarea class="form-control textarea"></textarea>
-              </div>
-            </div>
+            </div>-->
           </div>
           <div class="row">
             <div class="update ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary btn-round">Mettre à jour mon profil</button>
+              <input id="btnValid" name="btnValid" class="btn btn-primary btn-round" type="submit" value="Mettre à jour mon profil"/>
             </div>
           </div>
         </form>
