@@ -12,9 +12,8 @@
             <div class="numbers">
               <p class="card-category">Dernière Température Relevée</p>
               
-                <li>
-                  <button mat-raised-button (click)="openDialog()"><p class="card-title">37 C°<p></button>
-                </li>
+                  <button mat-raised-button (click)="openDialog()"><p class="card-title">{{this.temperature[this.temperature.length-1].value}} <p></button>
+       
                 <li *ngIf="animal">
                   You chose: <i>{{animal}}</i>
                 </li>
@@ -70,13 +69,10 @@
       </div>
       <div class="card-footer">
         <div class="chart-legend">
-          <i class="fa fa-circle text-info"></i> John
-          <i class="fa fa-circle text-warning"></i> Marie
+          <i class="fa fa-circle text-info"></i> température basale
+          <i class="fa fa-circle text-warning"></i> Vous
         </div>
         <hr />
-        <div class="card-stats">
-          <i class="fa fa-check"></i> Data information certified
-        </div>
       </div>
     </div>
   </div>
