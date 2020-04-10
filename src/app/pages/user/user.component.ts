@@ -35,7 +35,7 @@ export class UserComponent implements OnInit{
           this.formUser.get('address').setValue(this.user.address);
           this.formUser.get('city').setValue(this.user.city);
           this.formUser.get('postalCode').setValue(this.user.postalCode);
-       /*   this.formUser.get('phone').setValue(this.user.phone);*/
+          this.formUser.get('phone').setValue(this.user.phone);
         });
         this.formInit();
     }
@@ -47,7 +47,7 @@ export class UserComponent implements OnInit{
                                         address: new FormControl('', [Validators.required]),
                                         city: new FormControl('', [Validators.required]),
                                         postalCode: new FormControl('', [Validators.required]),
-                                       /* phone: new FormControl('', [Validators.required])*/});
+                                        phone: new FormControl('', [Validators.required])});
     }
     public findInvalidControls() {
       const invalid = [];
