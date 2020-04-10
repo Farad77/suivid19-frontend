@@ -49,15 +49,15 @@ export class DialogOverviewExampleDialog implements OnInit {
   }
 
   addTemp() {
-    this.findInvalidControls();
+    this.formTemp.get('comment').setValue("Un commentaire");
+    this.formTemp.get('date').setValue(new Date());
     if (this.formTemp.valid) {
-      this.formTemp.get('comment').setValue("Un commentaire");
-      this.formTemp.get('date').setValue(new Date());
+      
       this._TemperatureService.addTemperature(this.id, this.formTemp.value).subscribe(success => {
         console.log(success);
           this.dialogRef.close();
           this._snackBar.open("Modification réaliser avec succès", "FERMER");
-          this.router.navigate(['/dashboard']);
+          location.reload();
       });
     }
   }
