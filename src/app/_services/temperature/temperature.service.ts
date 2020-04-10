@@ -7,7 +7,7 @@ import { Observable, throwError } from 'rxjs';
 })
 export class TemperatureService {
 
-  TemperatureUrl = 'https://suivid19-api.herokuapp.com/patient';
+  TemperatureUrl = 'https://suivid19-api.herokuapp.com/patients';
   constructor(private http: HttpClient) { }
 
   //this._TemperatureServices.getTemperatures().subscribe(data => {this.users = data;  console.log(this.users)  });
