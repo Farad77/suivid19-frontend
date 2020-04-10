@@ -17,7 +17,6 @@ import { Survey } from 'app/_models/Survey';
 export class QuestionnaireComponent implements OnInit {
   isLinear = false;
   firstFormGroup:  FormGroup;
-  secondFormGroup: FormGroup;
   listQuestion: Array<Survey>;
   constructor( private _formBuilder: FormBuilder, private _SurveyServices: SurveyService, 
                private _SurveyAnswerService: SurveyAnswerService, private _SurveyChoiceService: SurveyChoiceService) {}
@@ -27,10 +26,7 @@ export class QuestionnaireComponent implements OnInit {
   ngOnInit() {
     this._SurveyServices.getSurveys().subscribe(data => {this.listQuestion = data;  console.log(this.listQuestion)  });
     this.firstFormGroup = this._formBuilder.group({
-      firstCtrl: ['', Validators.required]
-    });
-    this.secondFormGroup = this._formBuilder.group({
-      secondCtrl: ['', Validators.required]
+      firstCtrl: ['', Validators.required],
     });
   }
 

@@ -8,8 +8,8 @@
       <div class="card-body">
         <!--contenu-->
         <mat-vertical-stepper [linear]="isLinear" #stepper >
-          <mat-step [stepControl]="firstFormGroup" *ngFor="let question of listQuestion">
-            <form [formGroup]="firstFormGroup">
+          <form [formGroup]="firstFormGroup"  (ngSubmit)="validQuestionnaire()">
+            <mat-step [stepControl]="firstFormGroup" *ngFor="let question of listQuestion">
               <ng-template matStepLabel>{{ question.title }}</ng-template>
               <mat-form-field>
                 <mat-label>{{ question.description }}</mat-label>
@@ -18,30 +18,16 @@
               <div>
                 <button mat-button matStepperNext>Suivant</button>
               </div>
-            </form>
-          </mat-step>
-          <!--<mat-step [stepControl]="secondFormGroup">
-            <form [formGroup]="secondFormGroup">
-              <ng-template matStepLabel>Fill out your address</ng-template>
-              <mat-form-field>
-                <mat-label>Address</mat-label>
-                <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-                       required>
-              </mat-form-field>
+            </mat-step>
+            <mat-step>
+              <ng-template matStepLabel>Validation du questionnaire</ng-template>
+              <p>Vous avez terminer de répopndpre à toutes les questions.</p>
               <div>
-                <button mat-button matStepperPrevious >Back</button>
-                <button mat-button matStepperNext>Next</button>
+                <button mat-button matStepperPrevious>Précédent</button>
+                <button mat-button type="submit">Valider</button>
               </div>
-            </form>
-          </mat-step>-->
-          <mat-step>
-            <ng-template matStepLabel>Done</ng-template>
-            <p>You are now done.</p>
-            <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button (click)="stepper.reset()">Reset</button>
-            </div>
-          </mat-step>
+            </mat-step>
+          </form>
         </mat-vertical-stepper>
         <!--fin contenu-->
       </div>
