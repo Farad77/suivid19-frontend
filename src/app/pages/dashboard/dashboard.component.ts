@@ -11,7 +11,6 @@ import { TemperatureService } from 'app/_services/temperature/temperature.servic
   templateUrl: 'dialog-overview-example-dialog.html',
 })
 export class DialogOverviewExampleDialog {
-
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
@@ -32,7 +31,7 @@ export class DashboardComponent implements OnInit {
   idUser: string;
   temperature: any;
   id: number;
-
+  private temperatureList= [];
   public canvas: any;
   public ctx;
   public chartColor;
@@ -56,23 +55,27 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
-    var temperatureList= ["10"];
     //Temperature
     this.idUser = this._authService.getIdUser();
     this.id = + this.idUser;
     this._TemperatureService.getTemperature(this.id).subscribe(data => {
-      this.temperature = data; console.log(this.temperature);
+      this.temperature = data;
+      console.log(this.temperature);
       for (var i = 0; i < this.temperature.length; i++) {
         console.log(this.temperature[i].value);
-        temperatureList.push(`${this.temperature[i].value}`);
-      } 
-      console.log(temperatureList);
+        this.temperatureList.push(`${this.temperature[i].value}`);
+      }
+      this.loadcanvas();
     });
-    
+   
+
+  }
+  loadcanvas(){
+       
     var speedCanvas = document.getElementById("speedChart");
 
     var dataFirst = {
-      data: temperatureList,
+      data: this.temperatureList,
       fill: false,
       borderColor: '#fbc658',
       backgroundColor: 'transparent',
@@ -260,7 +263,6 @@ export class DashboardComponent implements OnInit {
         },
       }
     });
-
 
 
   }
