@@ -1,11 +1,19 @@
 <h1 mat-dialog-title>Bonjour, {{data.name}}</h1>
+<form [formGroup]="formTemp" (ngSubmit)="addTemp()">
 <div mat-dialog-content>
-  <p>Votre temperature</p>
-  <mat-form-field>
-    <input matInput [(ngModel)]="data.animal"><mat-label>°C</mat-label>
+  <p>Entrez votre temperature</p>
+  <mat-form-field >
+    <input matInput id="ss" formControlName="value"><mat-label>°C</mat-label>
+  </mat-form-field>
+  <mat-form-field >
+    <input matInput id="ss" formControlName="comment"><mat-label>Comment</mat-label>
+  </mat-form-field>
+  <mat-form-field >
+    <input matInput id="ss" formControlName="date"><mat-label>Date</mat-label>
   </mat-form-field>
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)="onNoClick()">Annuler</button>
-  <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Valider</button>
+  <button mat-button >Valider</button>
 </div>
+</form>

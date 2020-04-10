@@ -5,18 +5,58 @@ import { DialogData } from './dashboard.card.modal';
 import { AuthService } from 'app/_services/auth/auth.service';
 import { Router } from '@angular/router';
 import { TemperatureService } from 'app/_services/temperature/temperature.service';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'dialog-overview-example-dialog',
   templateUrl: 'dialog-overview-example-dialog.html',
 })
-export class DialogOverviewExampleDialog {
+export class DialogOverviewExampleDialog implements OnInit{
+  id:number;
+  formTemp: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private _TemperatureService: TemperatureService,  private _authService: AuthService) { }
+  ngOnInit(): void {
+    this.id = + this._authService.getIdUser();
+    this.initForm();
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
+  }
+  
+  initForm(){
+    this.formTemp = new FormGroup({
+      value: new FormControl('', [Validators.required]),
+      comment: new FormControl('', [Validators.required]),
+      date: new FormControl('', [Validators.required])
+    });
+  }
+
+  public findInvalidControls() {
+    const invalid = [];
+    const controls = this.formTemp.controls;
+    for (const name in controls) {
+        if (controls[name].invalid) {
+            console.log(name);
+        }
+    }
+    return invalid;
+  }
+  
+  addTemp(){
+   this.findInvalidControls();
+    if(this.formTemp.valid){
+      this.formTemp.get('comment').setValue("Un commentaire");
+      this.formTemp.get('date').setValue(new Date());
+      this._TemperatureService.addTemperature( this.id,this.formTemp.value).subscribe(success => {
+        if (success) {
+          
+        }
+      });
+    }
   }
 
 }
@@ -53,7 +93,7 @@ export class DashboardComponent implements OnInit {
       console.log('The dialog was closed');
       this.animal = result;
     });
-  }
+  } 
 
   ngOnInit() {
     //Temperature
@@ -63,11 +103,13 @@ export class DashboardComponent implements OnInit {
       this.temperature = data;
       console.log(this.temperature);
       for (var i = 0; i < this.temperature.length; i++) {
-        console.log(this.temperature[i].value);
+        console.log(this.temperature[i].value); 
         this.temperatureList.push(`${this.temperature[i].value}`);
         this.dateList.push(`${this.temperature[i].date}`);
       }
+      
       this.loadcanvas();
+      
     });
    
 

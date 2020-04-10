@@ -21,7 +21,7 @@ export class TemperatureService {
 
   //this._TemperatureServices.addTemperature(AgentObject).subscribe();
   addTemperature(id: number, Temperature: Temperature): Observable<Temperature> {
-    return this.http.post<Temperature>(this.TemperatureUrl + '/' + id + 'add/temperature', Temperature)
+    return this.http.post<Temperature>(this.TemperatureUrl + '/' + id + '/add/temperature', Temperature)
       /* .pipe(
         catchError(this.handleError())
       )  */;
