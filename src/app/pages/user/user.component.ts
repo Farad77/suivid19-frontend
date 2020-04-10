@@ -25,7 +25,16 @@ export class UserComponent implements OnInit{
     ngOnInit(){
         this.idUser = this._authService.getIdUser();
         this.id =+ this.idUser;
-        this._UserService.getUser(this.id).subscribe(data => {this.user = data;  console.log(this.user)});
+        this._UserService.getUser(this.id).subscribe(data => {
+          this.user = data;  console.log(this.user);
+          this.formUser.get('lastName').setValue(this.user.lastName);
+          this.formUser.get('firstName').setValue(this.user.firstName);
+          this.formUser.get('email').setValue(this.user.email);
+          this.formUser.get('address').setValue(this.user.address);
+          this.formUser.get('city').setValue(this.user.city);
+          this.formUser.get('postalCode').setValue(this.user.postalCode);
+          this.formUser.get('phone').setValue(this.user.phone);
+        });
         this.formInit();
     }
 
@@ -38,11 +47,9 @@ export class UserComponent implements OnInit{
                                         city: new FormControl('', [Validators.required]),
                                         postalCode: new FormControl('', [Validators.required]),
                                         phone: new FormControl('', [Validators.required])});
-        //this.formUser.patchValue(this.user);
     }
 
     modifProfil(){
-        
         if(this.formUser.valid){
             this._UserService.putUser(this.formUser.value, this.id).subscribe(success => {
               if (success) {
