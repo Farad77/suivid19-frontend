@@ -56,18 +56,23 @@ export class DashboardComponent implements OnInit {
   }
 
   ngOnInit() {
+    var temperatureList= ['10'];
     //Temperature
     this.idUser = this._authService.getIdUser();
     this.id = + this.idUser;
     this._TemperatureService.getTemperature(this.id).subscribe(data => {
       this.temperature = data; console.log(this.temperature);
+      for (var i = 0; i < this.temperature.length; i++) {
+        console.log(this.temperature[i].value);
+        temperatureList.push(`${this.temperature[i].value}`);
+      } 
+      console.log(temperatureList);
     });
-
-
+    
     var speedCanvas = document.getElementById("speedChart");
 
     var dataFirst = {
-      data: [0, 19, 15, 20, 30, 40, 40, 50, 25, 30, 50, 70],
+      data: temperatureList,
       fill: false,
       borderColor: '#fbc658',
       backgroundColor: 'transparent',
