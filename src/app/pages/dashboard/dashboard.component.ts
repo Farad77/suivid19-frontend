@@ -108,13 +108,12 @@ export class DashboardComponent implements OnInit {
         //Format date
         const d = new Date(this.temperature[i].date)
         const ye = new Intl.DateTimeFormat('fr', { year: 'numeric' }).format(d)
-        const mo = new Intl.DateTimeFormat('fr', { month: 'short' }).format(d)
+        const mo = new Intl.DateTimeFormat('fr', { month: '2-digit' }).format(d)
         const da = new Intl.DateTimeFormat('fr', { day: '2-digit' }).format(d)
         const hr = new Intl.DateTimeFormat('fr', { hour: 'numeric' }).format(d)
         const mi = new Intl.DateTimeFormat('fr', { minute: 'numeric' }).format(d)
-        const se = new Intl.DateTimeFormat('fr', { second: 'numeric' }).format(d)
         //date en FR
-        this.dateList.push(`${da}-${mo}-${ye} ${hr}-${mi}-${se}`);
+        this.dateList.push(`${da}/${mo}/${ye} ${hr}${mi}`);
       }
 
       this.loadcanvas();
