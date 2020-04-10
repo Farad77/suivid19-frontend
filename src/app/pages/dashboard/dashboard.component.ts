@@ -53,7 +53,7 @@ export class DialogOverviewExampleDialog implements OnInit{
       this.formTemp.get('date').setValue(new Date());
       this._TemperatureService.addTemperature( this.id,this.formTemp.value).subscribe(success => {
         if (success) {
-          
+          this.dialogRef.close();
         }
       });
     }
