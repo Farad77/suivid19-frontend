@@ -6,6 +6,7 @@ import { AuthService } from 'app/_services/auth/auth.service';
 import { Router } from '@angular/router';
 import { TemperatureService } from 'app/_services/temperature/temperature.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class DialogOverviewExampleDialog implements OnInit {
   formTemp: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData, private _TemperatureService: TemperatureService, private _authService: AuthService) { }
+    private _snackBar:MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData, private _TemperatureService: TemperatureService, private _authService: AuthService, private router: Router) { }
   ngOnInit(): void {
     this.id = + this._authService.getIdUser();
     this.initForm();
@@ -52,9 +54,10 @@ export class DialogOverviewExampleDialog implements OnInit {
       this.formTemp.get('comment').setValue("Un commentaire");
       this.formTemp.get('date').setValue(new Date());
       this._TemperatureService.addTemperature(this.id, this.formTemp.value).subscribe(success => {
-        if (success) {
+        console.log(success);
           this.dialogRef.close();
-        }
+          this._snackBar.open("Modification réaliser avec succès", "FERMER");
+          this.router.navigate(['/dashboard']);
       });
     }
   }
