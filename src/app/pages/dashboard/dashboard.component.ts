@@ -54,7 +54,6 @@ export class DialogOverviewExampleDialog implements OnInit {
     if (this.formTemp.valid) {
       
       this._TemperatureService.addTemperature(this.id, this.formTemp.value).subscribe(success => {
-        console.log(success);
           this.dialogRef.close();
           this._snackBar.open("Modification réaliser avec succès", "FERMER");
           location.reload();
